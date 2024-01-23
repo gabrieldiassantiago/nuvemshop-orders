@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@tiendanube/nexo": "^0.2.4",
+    "@types/node": "^20.11.5",
+    "axios": "^1.6.5",
+    "dotenv": "^16.4.0",
+    "fastify": "^4.25.2",
+    "venom-bot": "^5.0.21"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "nodemon --watch src --exec ts-node src/index.ts"
+  }
+}

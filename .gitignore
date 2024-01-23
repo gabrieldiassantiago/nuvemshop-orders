@@ -1,0 +1,32 @@
+# Ignore a pasta node_modules
+node_modules/
+
+# Ignore a pasta específica para tokens do VenomBot
+tokens/
+
+# Ignore os arquivos de ambiente
+.env
+
+# Ignore os arquivos de build ou saída compilada
+/dist/
+/build/
+
+# Ignore os arquivos relacionados ao gerenciador de pacotes npm
+package-lock.json
+
+# Ignore os arquivos relacionados ao gerenciador de pacotes yarn
+yarn.lock
+
+# Ignore arquivos de configuração de IDEs específicos
+.idea/
+.vscode/
+
+# Outros arquivos e pastas específicos para seu projeto
+# ...
+
+# Ignore as saídas do VenomBot (se geradas)
+logs/
+
+# Ignore os arquivos gerados pelo TypeScript (se usado)
+*.js
+*.js.map
