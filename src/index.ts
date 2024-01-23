@@ -1,20 +1,10 @@
 import axios from 'axios';
 import { create, Whatsapp } from 'venom-bot';
+import { Order } from './interfaces';
 
 require('dotenv').config();
 
-interface Product {
-  id: number;
-  name: string;
-}
 
-interface Order {
-  contact_identification: string;
-  contact_name: string;
-  products: Product[];
-  shipping_status: string;
-  payment_status: string;
-}
 
 const apiUrl = process.env.API_URL || ''; 
 const authToken = process.env.AUTH_TOKEN || '';
