@@ -2,8 +2,8 @@
 import axios from 'axios';
 import { NewProduct } from './interfaces';
 
-const apiUrl = 'https://api.tiendanube.com/v1/4201694';
-const authToken = '48794bb4f203819f6abe459fe06455bf147cb429';
+const apiUrl = '';
+const authToken = '';
 
 export async function createProduct(newProduct: NewProduct): Promise<void> {
   try {
