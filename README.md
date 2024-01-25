@@ -11,7 +11,7 @@ O código usa as seguintes bibliotecas:
 - `venom-bot`: Usado para interagir com o WhatsApp.
 - `dotenv`: Usado para carregar variáveis de ambiente do arquivo `.env`.
 
-## Interfaces
+## src/interfaces - Interfaces
 
 O código define as seguintes interfaces TypeScript:
 
