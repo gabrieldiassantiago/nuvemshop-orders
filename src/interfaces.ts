@@ -10,3 +10,13 @@ export interface Order {
     shipping_status: string;
     payment_status: string;
   }
+
+  export interface NewProduct {
+    variants: { price: number | number; stock: number; }[];
+    id: number;
+    name: string;
+    description: string;
+    price: string; 
+    stock: number;
+    stock_management: boolean;
+  }
