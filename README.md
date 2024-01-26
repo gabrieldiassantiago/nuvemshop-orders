@@ -11,34 +11,62 @@ O código usa as seguintes bibliotecas:
 - `venom-bot`: Usado para interagir com o WhatsApp.
 - `dotenv`: Usado para carregar variáveis de ambiente do arquivo `.env`.
 
-## src/interfaces - Interfaces
+# Módulo `cpfModule.ts`
 
-O código define as seguintes interfaces TypeScript:
-
-- `Product`: Representa um produto em um pedido.
-- `Order`: Representa um pedido feito por um cliente.
-- `Message`: Representa uma mensagem recebida do WhatsApp.
-
-## Variáveis de Ambiente
-
-O código usa as seguintes variáveis de ambiente:
-
-- `API_URL`: A URL da API da Nuvemshop.
-- `AUTH_TOKEN`: O token de autenticação para a API da Nuvemshop.
-- `SESSION_NAME`: O nome da sessão para o bot do WhatsApp.
+Este módulo contém funções para normalizar e validar números de CPF.
 
 ## Funções
 
-O código define as seguintes funções:
+* `normalizeCPF(cpf: string): string`
+    * Normaliza um número de CPF, removendo qualquer caractere que não seja um dígito.
+* `isValidCPF(cpf: string): boolean`
+    * Valida um número de CPF para verificar se ele possui o formato correto.
+# Módulo `productsModule.ts`
 
-- `getOrders(cpf: string)`: Faz uma solicitação GET para a API da Nuvemshop para obter todos os pedidos. Filtra os pedidos pelo CPF fornecido e retorna os pedidos correspondentes.
-- `start(client: Whatsapp)`: Inicia o bot do WhatsApp. O bot responde a mensagens que contêm a palavra "oi" pedindo o CPF do usuário. Em seguida, obtém os pedidos para o CPF fornecido e envia as informações dos pedidos de volta para o usuário.
-- `normalizeCPF(cpf: string)`: Normaliza o CPF removendo todos os caracteres não numéricos.
-- `isValidCPF(cpf: string)`: Verifica se o CPF é válido verificando se contém exatamente 11 dígitos.
-- `run()`: Cria uma nova sessão para o bot do WhatsApp e inicia o bot.
+Este módulo contém funções para criar produtos na Tiendanube.
 
-## Execução
+## Funções
 
-Para executar o código, você precisa definir as variáveis de ambiente necessárias e, em seguida, chamar a função `run()`. A função `run()` cria uma nova sessão para o bot do WhatsApp e inicia o bot.
+* `createProduct(newProduct: NewProduct): Promise<void>`
+    * Cria um novo produto na loja Tiendanube.
+# Módulo `ordersModule.ts`
 
-Espero que isso ajude! Se você tiver mais perguntas, fique à vontade para perguntar. 😊
+Este módulo contém funções para obter pedidos de uma API externa.
+
+## Funções
+
+* `getOrders(cpf: string): Promise<Order[]>`
+    * Obtém os pedidos associados a um CPF específico de uma API externa.
+
+# Módulo `main.ts`
+
+Este módulo inicializa um bot Venom para interações no WhatsApp.
+
+## Funções
+
+* `start()`
+    * Inicia a escuta por mensagens do usuário e conduz o processo de criação de produtos.
+
+# Módulo `interactionCreateProduct.ts`
+
+Este módulo gerencia a interação com o usuário para criação de novos produtos através do WhatsApp.
+
+## Funções
+
+* `start(client: Whatsapp)`
+    * Inicia a escuta por mensagens do usuário e conduz o processo de criação de produtos.
+
+O fluxo de criação de produtos é o seguinte:
+
+1. O usuário envia a mensagem `/criarproduto`.
+2. O bot solicita o nome do produto.
+3. O usuário envia o nome do produto.
+4. O bot solicita o preço do produto.
+5. O usuário envia o preço do produto.
+6. O bot solicita se o estoque do produto é gerenciado.
+7. O usuário envia a resposta `sim` ou `não`.
+8. Se o estoque for gerenciado, o bot solicita a quantidade em estoque.
+9. O usuário envia a quantidade em estoque.
+10. O bot cria o produto na Tiendanube.
+11. O bot envia uma mensagem de confirmação ao usuário.
+
