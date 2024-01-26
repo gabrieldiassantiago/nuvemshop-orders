@@ -1,5 +1,5 @@
 import { create, Whatsapp } from 'venom-bot';
-import { start } from './interactionCreateProduct';
+import { start } from './modules/interactionCreateProduct';
 
 const sessionName = "testando";
 
